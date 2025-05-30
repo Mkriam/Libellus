@@ -148,11 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     fragment.appendChild(crearElementoLibro(libro));
                 });
                 listaResultados.appendChild(fragment);
-            })
-            .catch(err => {
-                // Si ocurre un error en la petición, lo muestra al usuario.
-                console.error("buscarLibro.js: Error en la búsqueda AJAX:", err);
-                listaResultados.innerHTML = `<div class="mensajeError">Error al realizar la búsqueda: ${escaparHtml(err.message)}</div>`;
             });
     };
 
