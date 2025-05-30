@@ -1,0 +1,348 @@
+/* Estilos para el modal de creación y selección de grupo.*/
+
+/* Box-sizing global para evitar problemas de padding y border */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Cuando el modal está abierto, se desactiva el scroll del body */
+body.modalGrupoAbierta { 
+  overflow: hidden;
+}
+
+/* Overlay oscuro que cubre toda la pantalla cuando el modal está activo */
+.modalGrupoOverlay { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: none; /* Se muestra solo cuando el modal está activo */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Contenedor principal del modal */
+.modalGrupoContenido { 
+  background-color: white;
+  padding: 0; 
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 750px;
+  max-height: 90vh; 
+  display: none; /* Se muestra solo cuando el modal está activo */
+  flex-direction: column; 
+  overflow: hidden; 
+}
+
+/* Cabecera del modal: título y botón de cerrar */
+.modalGrupoCabecera { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px 15px 25px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+.modalGrupoCabecera h2 { 
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Botón para cerrar el modal (icono X) */
+.modalGrupoBtnCerrar { 
+  background: none;
+  border: none;
+  font-size: 2em;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  padding: 0;
+}
+.modalGrupoBtnCerrar:hover { 
+  color: black;
+}
+
+/* Tabs para alternar entre buscar grupo y crear grupo */
+.modalTabs { 
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 15px;
+  flex-shrink: 0;
+}
+.tabButton { 
+  padding: 12px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+  color: gray;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px; 
+}
+.tabButton:hover { 
+  color: black;
+}
+.tabButton.active { /* Tab activa resaltada en morado */
+  color: #6A0DAD; 
+  border-bottom-color: #6A0DAD; 
+  font-weight: 500;
+}
+
+/* Cuerpo del modal: área donde se muestran los resultados o el formulario */
+.modalGrupoCuerpo { 
+  padding: 20px 25px;
+  overflow-y: auto; 
+  flex: 1 1 0; 
+}
+
+/* Campo de búsqueda dentro del modal */
+#campoBusquedaModalGrupos { 
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+#campoBusquedaModalGrupos:focus { /* Resalta el campo al enfocar */
+  border-color: #6A0DAD; 
+  box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25); 
+  outline: none;
+}
+
+/* Lista de resultados de búsqueda de grupos (grid responsivo) */
+#listaModalGruposResultados { 
+  overflow-y: auto; 
+  flex-grow: 1; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); 
+  gap: 15px; 
+  padding: 5px;
+}
+
+/* Tarjeta de grupo en la lista de resultados */
+.grupoItemModal { 
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px; 
+  cursor: pointer;
+  background-color: #fdfdfd;
+  display: flex; 
+  align-items: center; 
+  position: relative;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  min-height: 85px; /* Aumenta la altura mínima para mejor visualización */
+}
+.grupoItemModal:hover { /* Eleva la tarjeta y resalta la sombra al pasar el ratón */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.grupoItemModal.yaPerteneceVisual { /* Visualiza los grupos a los que ya pertenece el usuario */
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.grupoItemModal.yaPerteneceVisual:hover { 
+  transform: none;
+  box-shadow: none;
+}
+
+/* Marca visual para indicar que ya pertenece al grupo */
+.yaPerteneceMarker { 
+  position: absolute;
+  top: 8px;   
+  right: 8px;  
+  background-color: #198754;
+  color: white;
+  padding: 3px 6px;
+  font-size: 0.7em;
+  border-radius: 3px;
+  font-weight: 500;
+  z-index: 10; 
+}
+
+/* Imagen de grupo en la tarjeta de resultados */
+.grupoImagenModal { 
+  width: 48px; 
+  height: 48px;
+  margin-right: 12px; 
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ddd; 
+  flex-shrink: 0;
+}
+.grupoImagenModal img { 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Información textual del grupo en la tarjeta */
+.grupoInfoModal { 
+  flex-grow: 1;
+  min-width: 0; 
+  padding-right: 60px; 
+}
+.grupoInfoModal h3 { /* Título del grupo */
+  font-size: 0.95em; 
+  font-weight: 600;
+  margin: 0; 
+  color: #333;
+  line-height: 1.3; /* Permite hasta 2 líneas antes del ellipsis */
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Descripción del grupo */
+.grupoInfoModal p.descripcionGrupo { /* Ejemplo */
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* Formulario para crear un nuevo grupo */
+#formCrearGrupo { 
+  overflow-y: auto;
+  padding-top: 10px;
+}
+.formFila { 
+  margin-bottom: 18px;
+}
+.formFila label { 
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9em;
+}
+.formFila input[type="text"], 
+.formFila input[type="password"], 
+.formFila input[type="url"], 
+.formFila textarea { 
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.formFila input[type="text"]:focus, 
+.formFila input[type="password"]:focus, 
+.formFila input[type="url"]:focus, 
+.formFila textarea:focus { 
+  border-color: #6A0DAD; 
+  box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25); 
+  outline: none;
+}
+.formFila textarea { 
+  min-height: 70px;
+  resize: vertical;
+}
+
+/* Botón para confirmar la creación del grupo */
+#botonConfirmarCrearGrupo { 
+  background-color: #28a745; 
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  display: block;
+  margin-top: 10px;
+}
+#botonConfirmarCrearGrupo:hover { 
+  background-color: #218838; 
+}
+
+/* Modal de confirmación para acciones importantes */
+.confirmacionModal { 
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.65); z-index: 1010;
+  display: none; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;
+}
+.confirmacionModalContenido { 
+  background-color: #fff; padding: 30px; border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-align: center;
+  width: 100%; max-width: 480px;
+}
+.confirmacionModalContenido #mensajeConfirmacionAccionGrupo { 
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #333;
+  line-height: 1.5;
+}
+#confirmacionGrupoHtmlAdicional { 
+  margin-bottom: 20px;
+}
+#confirmacionGrupoHtmlAdicional input[type="password"],
+.inputConfirmacion {
+  width: 100%; /* Ajustado para que ocupe el ancho completo */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  text-align: center;
+  box-sizing: border-box; /* Para incluir padding y borde en el ancho */
+}
+#confirmacionGrupoHtmlAdicional input[type="password"]:focus,
+.inputConfirmacion:focus { 
+  border-color: #6A0DAD; 
+  box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25); 
+  outline: none;
+}
+
+/* Botones de confirmación/cancelación en el modal de confirmación */
+.confirmacionModalBotones button { 
+  padding: 12px 25px; margin: 0 10px; border: none; border-radius: 5px;
+  cursor: pointer; font-size: 1em; font-weight: 500;
+}
+#botonConfirmarAccionGrupo { 
+  background-color: #198754; 
+  color: white;
+}
+#botonConfirmarAccionGrupo:hover { 
+  background-color: #157347; 
+}
+#botonCancelarAccionGrupo { 
+  background-color: #6c757d; 
+  color: white;
+}
+#botonCancelarAccionGrupo:hover { 
+  background-color: #5a6268; 
+}
+
+/* Mensaje cuando no hay resultados en la búsqueda de grupos */
+.noResultadosModal { 
+  padding: 25px; text-align: center; color: #6c757d; font-size: 1.05em;
+  width: 100%; grid-column: 1 / -1;
+}
+
+/* Botón para abrir el modal de nuevo grupo desde fuera del modal */
+#botonAbrirModalNuevoGrupo.botonAccion {
+  padding: 10px 18px;
+  background-color: #6A0DAD; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.2s;
+}
+#botonAbrirModalNuevoGrupo.botonAccion:hover { 
+  background-color: #560A86;
+}
+
+/* Utilidad para ocultar elementos rápidamente */
+.hidden { 
+  display: none !important;
+}

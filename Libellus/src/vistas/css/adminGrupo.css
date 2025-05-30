@@ -1,0 +1,339 @@
+/* Estilos para la administración de grupos.*/
+
+/* Formulario oculto que se muestra solo cuando se activa una acción de administración */
+.formularioAdminOcultable {
+    display: none;
+    margin-top: 20px; /* Espacio entre los botones de acción y el formulario mostrado */
+}
+
+/* Título principal del área de administración de grupo */
+main > h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* Contenedor de botones de acción principales (añadir, eliminar, volver, etc.) */
+.botonesAccionContainer {
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+    display: flex; /* Alinea los botones en fila y permite que se ajusten si no caben */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espacio entre botones */
+}
+
+/* Botones de acción principales dentro del contenedor */
+.botonesAccionContainer button, 
+.botonesAccionContainer .botonAccion {
+    background-color: #8a6ec4; /* Morado claro para acciones normales */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin: 5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.botonesAccionContainer button:hover,
+.botonesAccionContainer .botonAccion:hover {
+    background-color: #7426bd; /* Morado principal al pasar el ratón */
+    transform: translateY(-1px);
+}
+/* Botón de acción peligrosa (eliminar, etc.) */
+.botonesAccionContainer button.zonaPeligroBotonInicial {
+    background-color: #d9534f; /* Rojo para acciones peligrosas */
+}
+.botonesAccionContainer button.zonaPeligroBotonInicial:hover {
+    background-color: #c9302c;
+}
+/* Botón de volver */
+.botonesAccionContainer .botonVolver {
+    background-color: #5370be; 
+    color: #fff;
+}
+.botonesAccionContainer .botonVolver:hover {
+    background-color: #415796;
+    color: #fff;
+}
+
+/* Contenedor de los formularios de administración (añadir, editar, etc.) */
+.formularioContenedor {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    margin-bottom: 30px; /* Espacio entre formularios si se muestran varios */
+}
+.formularioContenedor h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #4a0e6b; /* Morado oscuro */
+}
+.formularioContenedor div {
+    margin-bottom: 18px;
+}
+.formularioContenedor label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+.formularioContenedor input[type="text"],
+.formularioContenedor input[type="url"],
+.formularioContenedor input[type="password"],
+.formularioContenedor textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.95em;
+}
+.formularioContenedor input[type="text"]:focus,
+.formularioContenedor input[type="url"]:focus,
+.formularioContenedor input[type="password"]:focus,
+.formularioContenedor textarea:focus {
+    border-color: #7426bd;
+    box-shadow: 0 0 0 0.2rem rgba(116, 38, 189, 0.25);
+    outline: none;
+}
+.formularioContenedor textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+.formularioContenedor small {
+    font-size: 0.85em;
+    color: #666;
+    display: block;
+    margin-top: 4px;
+}
+/* Botón de enviar dentro de los formularios */
+.formularioContenedor button[type="submit"],
+.formularioContenedor .botonAccion {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 20px;
+    border: none;
+    background-color: #5cb85c; /* Verde para guardar/agregar */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+.formularioContenedor button[type="submit"]:hover,
+.formularioContenedor .botonAccion:hover {
+    background-color: #4cae4c; /* Verde más oscuro al pasar el ratón */
+}
+
+/* Lista de miembros para gestión de grupo */
+.listaGestionMiembros {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+.listaGestionMiembros li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 5px; /* Más padding vertical */
+    border-bottom: 1px solid #f0f0f0; /* Línea separadora suave */
+}
+.listaGestionMiembros li:last-child {
+    border-bottom: none;
+}
+.listaGestionMiembros img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
+.listaGestionMiembros span {
+    flex-grow: 1;
+    color: #333;
+}
+/* Etiqueta para el líder del grupo */
+.listaGestionMiembros .labelLider {
+    font-style: italic;
+    color: #5a1e9a;
+    margin-left: auto;
+    padding-right: 10px;
+    font-weight: 500;
+}
+
+/* Botón para eliminar miembro de la lista */
+.botonEliminarMiembro,
+form .botonEliminarMiembro,
+button.botonEliminarMiembro {
+    background-color: #e74c3c !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.botonEliminarMiembro:hover,
+form .botonEliminarMiembro:hover,
+button.botonEliminarMiembro:hover {
+    background-color: #c0392b !important;
+    color: #fff !important;
+}
+
+/* Zona peligrosa: acciones de eliminación (libro o grupo) */
+.zonaPeligro {
+    border: 2px solid #e74c3c;
+    background: #fff6f6;
+    padding: 24px 18px 18px 18px;
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.07);
+}
+.zonaPeligro h2 {
+    color: #e74c3c;
+    margin-bottom: 12px;
+}
+.zonaPeligro p {
+    color: #a94442;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+.zonaPeligro label {
+    color: #a94442;
+    font-weight: 500;
+}
+.zonaPeligro input[type="password"] {
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+    padding: 7px 10px;
+    margin-bottom: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.zonaPeligro .botonAccion {
+    background-color: #e74c3c !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 22px;
+    font-size: 1em;
+    font-weight: 500;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+}
+.zonaPeligro .botonAccion:hover {
+    background-color: #c0392b !important;
+    color: #fff !important;
+}
+
+/* Mensajes de éxito y error para feedback al usuario */
+.mensajeExito,
+.mensajeError {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.mensajeExito {
+    background-color: #d4edda;
+    color: darkgreen;
+    border: 1px solid #c3e6cb;
+}
+.mensajeError {
+    background-color: #f8d7da;
+    color: #ce1e30;
+    border: 1px solid #f5c6cb;
+}
+
+/* Formularios de zona peligrosa: eliminar libro y eliminar grupo */
+#formEliminarLibroGrupo,
+#formEliminarGrupo {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: #fff3f3;
+    border: 1.5px solid #e57373;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(229, 115, 115, 0.07);
+}
+
+#formEliminarLibroGrupo h2,
+#formEliminarGrupo h2 {
+    color: #c62828;
+    margin-bottom: 1rem;
+}
+
+#formEliminarLibroGrupo label,
+#formEliminarGrupo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+#formEliminarLibroGrupo select,
+#formEliminarGrupo select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #e57373;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background: #fff;
+}
+
+/* Botones de eliminar en formularios peligrosos */
+#formEliminarLibroGrupo .botonAccion.zonaPeligro,
+#formEliminarGrupo .botonAccion.zonaPeligro,
+#formEliminarGrupo .botonAccion {
+    background: #e57373;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#formEliminarLibroGrupo .botonAccion.zonaPeligro:hover,
+#formEliminarGrupo .botonAccion.zonaPeligro:hover,
+#formEliminarGrupo .botonAccion:hover {
+    background: #c62828;
+}
+
+/* Elimina el centrado forzado del botón en el formulario de eliminar grupo */
+#formEliminarGrupo form {
+    display: block;
+}
+
+/* Botón de eliminar grupo: ancho completo y margen arriba */
+#formEliminarGrupo .botonAccion,
+#formEliminarGrupo .botonAccion.zonaPeligro {
+    display: block;
+    width: 220px;
+    margin: 18px auto 0 auto;
+    background: #e74c3c !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 0;
+    font-size: 1.08em;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.10);
+}
+
+#formEliminarGrupo .botonAccion:hover,
+#formEliminarGrupo .botonAccion.zonaPeligro:hover {
+    background: #c0392b !important;
+    color: #fff !important;
+}

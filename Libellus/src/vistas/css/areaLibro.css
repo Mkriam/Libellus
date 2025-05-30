@@ -1,0 +1,350 @@
+/* 
+    Estilos generales para la página de detalle de libro.
+    Incluye estilos para el layout, portada, información, sinopsis, opiniones, formularios y botones.
+*/
+
+/*  Layout principal y fondo  */
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-image: url('../../img/fondo.png'); 
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 70px; 
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Contenedor principal del libro */
+main.containerPrincipalLibro { 
+    width: 90%;
+    max-width: 960px; /* Limita el ancho para mejor lectura */
+    margin: 30px auto; 
+    padding: 35px 40px;
+    background-color: rgba(252, 250, 255, 0.98); 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(74, 14, 107, 0.1); /* Sombra sutil morada */
+}
+
+/*  Mensajes de éxito y error  */
+.mensajeExito, 
+.mensajeError { 
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.95em;
+    border-width: 1px;
+    border-style: solid;
+}
+.mensajeExito {
+    background-color: #e6f9e6;
+    color: #2b7c2b;
+    border-color: #c3e6cb;
+}
+.mensajeError {
+    background-color: #fdecea;
+    color: #c71e2f;
+    border-color: #f5c6cb;
+}
+
+/*  Grid principal para portada e info del libro  */
+.libroDetalleGrid { 
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Portada fija, info flexible */
+    gap: 35px; /* Espacio entre portada e info */
+    align-items: flex-start;
+}
+
+/* Portada del libro */
+.libroPortada { 
+    text-align: center; /* Centra la imagen si es más pequeña */
+}
+.libroPortada img { 
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    border: 2px solid #fff;
+}
+
+/* Información del libro */
+.libroInfo h1 { 
+    font-size: 2.4em;
+    color: #4a0e6b;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: bold;
+    line-height: 1.25;
+}
+.libroInfo p { 
+    font-size: 1.05em;
+    color: #4f4f4a;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+.libroInfo p strong {
+    color: #532d8c;
+    font-weight: 600;
+}
+
+
+/*  Sinopsis del libro  */
+.sinopsis { 
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e0d8ea;
+}
+.sinopsis h3 { 
+    font-size: 1.4em;
+    color: #4a0e6b;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.sinopsis p { 
+    text-align: justify;
+    color: #333;
+    line-height: 1.7;
+}
+
+/*  Botón de compra y volver  */
+.urlCompra { 
+    margin-top: 20px;
+}
+/* Los botones de compra y volver se agrupan y se alinean a los extremos */
+.urlCompraAcciones {
+    display: flex;
+    margin-top: 30px;
+    gap: 25px;
+    align-items: center; /* Alinea verticalmente los botones */
+    justify-content: center; /* Centra horizontalmente */
+}
+.urlCompraAcciones > * {
+    margin: 0 !important;
+    align-self: center;
+}
+.urlCompraAcciones .botonAccion {
+    min-width: 170px;
+}
+
+/*  Sección de Acciones y Opiniones  */
+.separadorSecciones { 
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top: 1px dashed #c8b6e2;
+}
+
+/* Opiniones del usuario sobre el libro */
+.opinionesSeccion h2,
+.opinionesSeccion .subtituloSeccion { 
+    font-size: 1.7em;
+    color: #532d8c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.opinionesSeccion .subtituloSeccion { 
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.opinionesSeccion > p { 
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+.opinionesSeccion > p strong {
+    font-weight: 600;
+}
+
+/* Comentario actual del usuario */
+.comentarioActual { 
+    margin-bottom: 20px;
+}
+.comentarioActual strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+/* Estilo base para el comentario (placeholder) */
+.comentarioContenido { 
+    padding: 12px 15px;
+    border: 1px solid #e0d8ea;
+    border-radius: 6px;
+    background-color: #fdf9ff;
+    min-height: 50px;
+    white-space: pre-wrap;
+    font-style: italic;
+    color: #444;
+}
+/* Si hay contenido, quitar cursiva */
+.comentarioContenido:not(:empty) {
+    font-style: normal;
+}
+/* Centra solo el texto del comentario, no el cuadro */
+.comentarioActual .comentarioContenido {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 12px 15px;
+    border: 1px solid #e0d8ea;
+    border-radius: 6px;
+    background-color: #fdf9ff;
+    min-height: 50px;
+    white-space: pre-wrap;
+    font-style: normal;
+    color: #444;
+    font-size: 1.08em;
+    line-height: 1.7;
+    word-break: break-word;
+}
+
+/*  Formulario de Edición del Libro  */
+.formularioEdicionLibro { 
+    background-color: #f8f5fc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e8e0f3;
+}
+.campoFormulario { 
+    margin-bottom: 15px;
+}
+.formLabel {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #4a0e6b;
+}
+.formSelect, 
+.formControl {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.formSelect:focus, 
+.formControl:focus { 
+    border-color: #7426bd;
+    box-shadow: 0 0 0 0.2rem rgba(116, 38, 189, 0.25);
+    outline: none;
+}
+
+/* Acciones del libro (botones) */
+.libroAcciones { 
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+}
+/* Centra el botón de eliminar */
+.libroAccionesCentrada {
+    justify-content: center !important;
+}
+
+/* Más espacio entre "Tu Progreso y Opinión" y "Modificar Estado y Comentario" */
+.espacioOpiniones {
+    height: 70px;
+}
+
+/*  Botones reutilizables  */
+.botonAccion { 
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #fff !important;
+    background-color: #7426bd;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none !important;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.botonAccion:hover {
+    background-color: #5a1e9a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.botonAccion.botonPrimario {
+    background-color: #5cb85c;
+}
+.botonAccion.botonPrimario:hover {
+    background-color: #4cae4c;
+}
+.botonAccion.botonPeligro {
+    background-color: #d9534f;
+}
+.botonAccion.botonPeligro:hover {
+    background-color: #c9302c;
+}
+.botonAccion.botonVolver { 
+    background-color: #5370be;
+    margin-top: 20px;
+}
+.botonAccion.botonVolver:hover {
+    background-color: #415796;
+}
+
+/* Contenedor para el botón de volver principal */
+.accionesPagina {
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e0d8ea;
+}
+
+/*  Ajustes para móviles  */
+@media (max-width: 767px) {
+    .containerPrincipalLibro { 
+        width: 95%;
+        padding: 20px 15px;
+    }
+    .libroDetalleGrid { 
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .libroPortada { 
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .libroPortada img { 
+        max-width: 240px;
+    }
+    .libroInfo h1 { 
+        font-size: 1.8em;
+        text-align: center;
+    }
+    .libroInfo p, .sinopsis p { 
+        font-size: 0.95em;
+        text-align: left;
+    }
+    .libroInfo .sinopsis p {
+        text-align: justify;
+    }
+    .urlCompra, .libroAcciones { 
+        text-align: center;
+    }
+    .libroAcciones { 
+        flex-direction: column;
+        align-items: center;
+    }
+    .libroAcciones .botonAccion, .libroAcciones form { 
+        width: 100%;
+        max-width: 280px;
+    }
+    .formularioEdicionLibro button.botonAccion { 
+        width: auto;
+    }
+}

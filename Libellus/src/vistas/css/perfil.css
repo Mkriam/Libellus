@@ -1,0 +1,243 @@
+/* Estilos para la página de perfil de usuario.*/
+
+/* Fondo general y layout principal para centrar el contenido */
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-image: url('../../img/fondo.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 90px 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor principal del perfil */
+main {
+    background-color: #e1d5ef;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal del perfil */
+main h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Información del usuario (avatar, nombre, email, etc.) */
+.perfil-info {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.perfil-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #eee;
+}
+.perfil-info p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 5px 0;
+}
+.perfil-info strong {
+    color: #333;
+}
+
+/* Botones de acción principales (editar, cambiar contraseña, etc.) */
+.botones-accion {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.botones-accion button {
+    background-color: #bfa7e4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+.botones-accion button:hover {
+    background-color: #a98eda;
+}
+
+/* Formulario ocultable para editar datos o cambiar contraseña */
+.formularioOcultable {
+    display: none;
+}
+.formularioOcultable p {
+    text-align: center;
+    color: #ce1e30;
+    font-weight: bold;
+}
+
+/* Contenedor de los formularios de edición */
+.formulario-contenedor {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+.formulario-contenedor small {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 3px;
+}
+.formulario-contenedor h2 {
+    text-align: center;
+    color: #444;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.formulario-contenedor form div {
+    margin-bottom: 15px;
+}
+.formulario-contenedor label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #555;
+}
+.formulario-contenedor input[type="text"],
+.formulario-contenedor input[type="url"],
+.formulario-contenedor input[type="password"],
+.formulario-contenedor input[type="file"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.formulario-contenedor button[type="submit"] {
+    background-color: #8a2be2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    display: block;
+    margin: 10px auto 0 auto;
+}
+.formulario-contenedor button[type="submit"]:hover {
+    background-color: #7a1cc1;
+}
+
+/* Mensajes de éxito y error para feedback al usuario */
+.mensajeExito,
+.mensajeError {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.mensajeExito {
+    background-color: #d4edda;
+    color: darkgreen;
+    border: 1px solid #c3e6cb;
+}
+.mensajeError {
+    background-color: #f8d7da;
+    color: #ce1e30;
+    border: 1px solid #f5c6cb;
+}
+
+/* Zona peligrosa: acciones de eliminación de cuenta */
+.zona-peligro {
+    width: 70%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.zona-peligro h2 {
+    color: #ad1726;
+    border-bottom: 2px solid #ad1726;
+    width: 100%;
+    text-align: center;
+}
+.zona-peligro button {
+    background-color: red;
+}
+.zona-peligro button:hover {
+    background-color: #ce1e30;
+}
+
+/* Botón inicial destacado para eliminar cuenta */
+.zona-peligro-boton-inicial {
+    background-color: red;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+.zona-peligro-boton-inicial:hover {
+    background-color: #ce1e30;
+}
+
+/* Formulario de confirmación para eliminar cuenta */
+#confirmacion_eliminar_form {
+    width: 100%;
+    max-width: 400px;
+}
+#confirmacion_eliminar_form p {
+    text-align: center;
+    color: #ad1726;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+#confirmacion_eliminar_form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+#confirmacion_eliminar_form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+#confirmacion_eliminar_form button[type="submit"] {
+    margin: 0 auto;
+    font-weight: bold;
+    background-color: red;
+}
+#confirmacion_eliminar_form button[type="submit"]:hover {
+    background-color: #ce1e30;
+}

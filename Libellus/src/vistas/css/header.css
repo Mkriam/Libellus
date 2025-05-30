@@ -1,0 +1,57 @@
+/* 
+  Estilos para el header principal de la aplicación.
+  El header es fijo, siempre visible en la parte superior, y contiene el logo, el título y el área de usuario.
+*/
+header {
+  position: fixed; /* Mantiene el header fijo en la parte superior de la ventana */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around; /* Distribuye los elementos de forma uniforme */
+  align-items: center;
+  padding: 10px 5%;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar el header */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  box-sizing: border-box;
+}
+
+/* Logo y avatar de usuario: se muestran como imágenes circulares y se ajustan al tamaño del header */
+.logo img,
+.areaUsu img {
+  width: 45px;
+  height: 45px;
+  vertical-align: middle;
+  object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+  border-radius: 50%; /* Hace la imagen completamente circular */
+}
+
+/* Título de la aplicación: es un enlace grande y destacado, sin subrayado */
+.titulo a {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 20px;
+  color: black;
+  text-decoration: none;
+}
+
+/* Área de usuario: contiene el avatar y el enlace de cerrar sesión, alineados horizontalmente */
+.areausu {
+  display: flex;
+  align-items: center;
+}
+
+/* Enlace para cerrar sesión: se separa del avatar y se muestra como texto simple */
+.cerrar_sesion {
+  margin-left: 25px;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+
+/* Efecto hover en el enlace de cerrar sesión: cambia el color al morado principal de la marca para indicar interactividad */
+.cerrar_sesion:hover {
+  color: #7426bd;
+}

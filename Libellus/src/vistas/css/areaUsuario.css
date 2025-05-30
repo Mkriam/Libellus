@@ -1,0 +1,477 @@
+/* Estilos para el área de usuario de Libellus.*/
+
+
+/* Estructura de la página y fondo */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fondo, fuente y alineación general */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-image: url('../../img/fondo.png');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 60px; /* Espacio para el header */
+  box-sizing: border-box;
+}
+
+/* Contenedor principal que agrupa la barra lateral y el contenido de libros */
+.containerPrincipal { 
+  display: flex;
+  flex-grow: 1;
+  width: 97%;
+  max-width: 1500px;
+  margin: 15px auto;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/*  Barra lateral de grupos  */
+
+/* Barra lateral donde se muestran los grupos del usuario */
+.sidebarGrupos { 
+  width: 280px;
+  flex-shrink: 0;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border-right: 1px solid #c2c2c2;
+  background-color:#efeaf3;
+}
+
+/* Título de la sección de grupos */
+.sidebarGrupos h2 { 
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d6d6d6;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Botón para crear un nuevo grupo */
+#botonAbrirModalNuevoGrupo { 
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  background-color: #7426bd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+#botonAbrirModalNuevoGrupo:hover { 
+  background-color: #5a1e9a;
+}
+
+/* Lista de grupos del usuario */
+.listaGrupos { 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cada grupo en la lista */
+.listaGrupos .itemGrupo { 
+  border-bottom: 1px solid #eee;
+}
+.listaGrupos .itemGrupo:last-child { 
+  border-bottom: none;
+}
+
+/* Enlace a un grupo */
+.listaGrupos .enlaceGrupo { 
+  display: flex;
+  align-items: center;
+  padding: 10px 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 4px;
+}
+.listaGrupos .enlaceGrupo:hover { 
+  background-color: #e9e4f0;
+  color: #7426bd;
+}
+
+/* Imagen de grupo en la lista */
+.listaGrupos .imgGrupo { 
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+/* Nombre del grupo, truncado si es largo */
+.listaGrupos .nombreGrupoTexto { 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  font-size: 0.95em;
+}
+
+/*  Contenido principal de libros  */
+
+/* Contenedor principal de los libros guardados */
+.contenidoLibros { 
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 25px 30px;
+  box-sizing: border-box;
+}
+
+/* Título principal de la sección de libros */
+.contenidoLibros h1 { 
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #444;
+  font-size: 1.8em;
+}
+
+/*  Barra de búsqueda y botón de añadir libro  */
+
+/* Contenedor de la barra de búsqueda y el botón de añadir libro */
+.barraBusquedaContenedor { 
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Campo de búsqueda de libros */
+.campoBusqueda { 
+  padding: 12px 18px;
+  width: 60%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 1em;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al enfocar el campo de búsqueda */
+.campoBusqueda:focus { 
+  outline: none;
+  border-color: #a98eda;
+  box-shadow: 0 0 8px rgba(169, 142, 218, 0.5);
+}
+
+/* Botón para abrir el modal de añadir libro */
+.barraBusquedaContenedor .botonAccion#botonAbrirModalAnadirLibro { 
+  padding: 12px 20px;
+  background-color: #7426bd;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+.barraBusquedaContenedor .botonAccion#botonAbrirModalAnadirLibro:hover { 
+  background-color: #5a1e9a;
+}
+
+/*  Listado de libros guardados  */
+
+/* Grid de tarjetas de libros */
+.listaLibros { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding-bottom: 20px;
+}
+
+/* Tarjeta de cada libro guardado */
+.datosLibro { 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Efecto al pasar el ratón por encima de un libro (sombra y elevación) */
+.datosLibro:hover { 
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Indica que la tarjeta es clicable */
+}
+
+/* Imagen de portada del libro */
+.portadaLibro { 
+  width: 100px;
+  margin-right: 18px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+.portadaLibro img { 
+  width: 100%;
+  height: 150px;
+  border-radius: 4px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid #eee;
+}
+
+/* Información textual del libro */
+.datosInfo { 
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.datosInfo h2 { 
+  font-size: 1.15em;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #333;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.datosInfo p { 
+  font-size: 0.85em;
+  margin: 3px 0;
+  line-height: 1.4;
+  color: #555;
+}
+.datosInfo p strong { 
+  color: #222;
+  margin-right: 4px;
+}
+
+/* Sinopsis del libro, con scroll si es muy larga */
+.libroSinopsisContenedor { 
+  margin-top: 10px;
+  font-size: 0.85em;
+  max-height: 60px;
+  overflow-y: auto;
+  padding-right: 5px;
+  line-height: 1.5;
+}
+.libroSinopsisContenedor p { 
+  font-size: 1em;
+  margin: 0;
+  color: #666;
+}
+.libroSinopsisContenedor p strong { 
+  color: #444;
+}
+
+/*  Mensajes de éxito, error y estados  */
+
+/* Mensaje de éxito tras una acción */
+.mensajeExito, 
+.mensajeError { 
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+.mensajeExito { 
+  background-color: #d4edda;
+  color: darkgreen;
+  border: 1px solid #c3e6cb;
+}
+.mensajeError { 
+  background-color: #f8d7da;
+  color: #ce1e30;
+  border: 1px solid #f5c6cb;
+}
+
+/* Mensaje cuando no hay resultados en la búsqueda */
+.noResultados { 
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+/* Mensaje de carga/búsqueda en curso */
+.infoCarga {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+/*  Scroll personalizado para listas y sinopsis  */
+
+/* Scrollbar personalizado para barras laterales, listas y sinopsis */
+.sidebarGrupos::-webkit-scrollbar, 
+.contenidoLibros::-webkit-scrollbar, 
+.libroSinopsisContenedor::-webkit-scrollbar {  /* Barra de desplazamiento más delgada y estética */
+  width: 8px;
+  height: 8px;
+}
+.sidebarGrupos::-webkit-scrollbar-track, 
+.contenidoLibros::-webkit-scrollbar-track, 
+.libroSinopsisContenedor::-webkit-scrollbar-track {  /* Fondo claro y bordes redondeados en el track */
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  margin: 2px 0;
+}
+.sidebarGrupos::-webkit-scrollbar-thumb, 
+.contenidoLibros::-webkit-scrollbar-thumb, 
+.libroSinopsisContenedor::-webkit-scrollbar-thumb {  /* Color del thumb de la barra de scroll */
+  background: #bbb;
+  border-radius: 4px;
+}
+.sidebarGrupos::-webkit-scrollbar-thumb:hover, 
+.contenidoLibros::-webkit-scrollbar-thumb:hover, 
+.libroSinopsisContenedor::-webkit-scrollbar-thumb:hover {  /* Thumb más oscuro al pasar el ratón */
+  background: #999;
+}
+
+/* Scrollbar */
+.sidebarGrupos, 
+.contenidoLibros, 
+.libroSinopsisContenedor {  /* Scrollbar más delgada y colores personalizados en Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #bbb rgba(0, 0, 0, 0.08);
+}
+
+/*  Ajustes para móviles y tablets  */
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 56px; /* Reduce el espacio superior en móvil */
+  }
+
+  .containerPrincipal { 
+    flex-direction: column; /* Cambia a disposición vertical */
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    height: calc(100% - 56px); /* Ajusta altura para header fijo */
+  }
+
+  .sidebarGrupos { 
+    width: 100%; /* Barra lateral ocupa todo el ancho arriba */
+    height: auto;
+    max-height: 40vh; /* Limita la altura máxima en móvil */
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    flex-shrink: 1;
+  }
+  .sidebarGrupos h2 { 
+    text-align: center;
+    font-size: 1.2em;
+  }
+  #botonAbrirModalNuevoGrupo { 
+    width: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 200px;
+  }
+
+  .contenidoLibros { 
+    padding: 20px 15px; /* Menos padding en móvil */
+    height: auto;
+    flex-grow: 1;
+  }
+  .contenidoLibros h1 { 
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .barraBusquedaContenedor { 
+    flex-direction: column; /* Elementos de la barra de búsqueda en columna */
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .campoBusqueda { 
+    width: 100%; /* Campo de búsqueda ocupa todo el ancho */
+    max-width: none;
+    font-size: 0.95em;
+  }
+  .barraBusquedaContenedor .botonAccion#botonAbrirModalAnadirLibro { 
+    width: 100%; /* Botón de añadir libro ocupa todo el ancho */
+    max-width: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .listaLibros { 
+    grid-template-columns: 1fr; /* Una sola columna de libros */
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .datosLibro { 
+    flex-direction: column; /* Tarjeta de libro en columna */
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    width: 80%;
+  }
+
+  .portadaLibro { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .portadaLibro img { 
+    width: auto;
+    max-width: 40%; /* Imagen de portada más pequeña en móvil */
+    height: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .sidebarGrupos { 
+    width: 240px;
+  }
+  .contenidoLibros { 
+    padding: 25px;
+  }
+  .listaLibros { 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .campoBusqueda { 
+    width: 65%;
+  }
+}

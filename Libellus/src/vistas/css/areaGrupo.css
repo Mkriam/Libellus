@@ -1,0 +1,391 @@
+/* Estilos para la página de detalle de grupo. */
+
+/*  Principal y fondo  */
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column; 
+    /* Permite scroll normal en toda la página */
+} 
+
+body { 
+    font-family: 'Georgia', serif; 
+    background-image: url('../../img/fondo.png'); 
+    background-position: top center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-attachment: fixed; 
+    color: #333; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh; 
+    padding-top: 70px; /* Espacio para el header */
+    box-sizing: border-box; 
+    overflow-y: auto; /* Permitir scroll vertical en body */
+} 
+
+/* Contenedor principal del grupo */
+.containerPrincipalGrupo { 
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 25px auto 35px auto; 
+    background-color: rgba(250, 248, 253, 0.96); 
+    border-radius: 12px; 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+    padding: 30px 40px; 
+}
+
+/*  Mensajes de éxito y error  */
+.mensajeExito, 
+.mensajeError { 
+    padding: 15px;
+    margin-bottom: 25px; 
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1em;
+    border-width: 1px;
+    border-style: solid;
+}
+.mensajeExito {
+    background-color: #e6f9e6;
+    color: #2b7c2b;
+    border-color: #c3e6cb;
+}
+.mensajeError {
+    background-color: #fdecea;
+    color: #c71e2f;
+    border-color: #f5c6cb;
+}
+
+/*  Encabezado del Grupo  */
+.grupoEncabezadoArea { 
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d8cde4;
+}
+.grupoImagen { 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Imagen circular */
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+.grupoTituloEnlace { 
+    flex-grow: 1;
+}
+.grupoTituloEnlace h1 { 
+    font-size: 2.6em; 
+    font-weight: bold; 
+    color: #4a0e6b; 
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+/*  Botones principales: Más Info y Volver  */
+.botonAccion { 
+    padding: 10px 20px;
+    font-size: 0.95em;
+    border-radius: 20px;
+    border: none;
+    background-color: #7426bd; 
+    color: white !important; 
+    cursor: pointer;
+    text-decoration: none !important; 
+    display: inline-block;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: 500;
+    text-align: center;
+}
+.botonAccion:hover { 
+    background-color: #5a1e9a; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.botonAccion.botonMasInfo { 
+    background-color: #8a6ec4; /* Color diferente para el botón de más info */
+    font-size: 0.9em;
+}
+.botonAccion.botonMasInfo:hover {
+    background-color: #7050a0;
+}
+
+/* Contenedor para el botón de volver cuando está solo */
+.accionesPagina { 
+    display: flex;
+    justify-content: flex-end; /* Botón de volver alineado a la derecha */
+    margin-bottom: 30px; 
+    padding-top: 10px; 
+}
+.botonAccion.botonVolver { 
+    background-color: #5370be !important;
+}
+.botonAccion.botonVolver:hover { 
+    background-color: #415796 !important;
+}
+
+/* Contenedor para los dos botones principales (más info y volver) */
+.accionesGrupoBotones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+.accionesGrupoBotones .botonAccion {
+    min-width: 180px;
+}
+
+/* Los botones se apilan en móvil */
+@media (max-width: 600px) {
+    .accionesGrupoBotones {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .accionesGrupoBotones .botonAccion {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+/*  Libro Destacado (primer libro del grupo)  */
+.libroDestacadoSeccion { 
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #d8cde4; /* Línea separadora */
+}
+.libroDestacadoSeccion h2 { 
+    text-align: center;
+    font-size: 1.8em;
+    color: #532d8c;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+.libroDestacado { 
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start; 
+    background-color: #fdf9ff; 
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    gap: 25px; 
+}
+.libroDestacado .libroPortadaContenedor { 
+    width: 180px; 
+    height: 260px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.libroPortadaDestacada { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.libroDestacado .libroInfo { 
+    flex-grow: 1;
+    text-align: left;
+}
+.libroDestacado .libroInfo h3 { 
+    font-size: 1.8em; 
+    font-weight: bold;
+    color: #4a0e6b;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.libroDestacado .libroInfo p { 
+    font-size: 1em;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.libroDestacado .libroInfo p.fechaAnadido { 
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}
+.libroDestacado .libroInfo .verDetalles { 
+    margin-top: 15px;
+    background-color: #8a6ec4;
+}
+.libroDestacado .libroInfo .verDetalles:hover {
+    background-color: #7050a0;
+}
+
+/*  Libros anteriores del grupo  */
+.librosAnterioresSeccion h2 { 
+    text-align: center;
+    font-size: 1.6em; 
+    color: #532d8c;
+    margin-bottom: 25px;
+    margin-top: 0; 
+    font-weight: bold;
+}
+.listaLibrosGrupo { 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px;
+}
+.libroItem { 
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden; 
+}
+.libroItem:hover { 
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.enlaceLibroItem { 
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+.libroItem .libroPortadaContenedor { 
+    width: 100%;
+    height: 180px; 
+    background-color: #f0f0f0;
+}
+.libroItem .libroPortada { 
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+.libroItem .libroInfo { 
+    padding: 12px;
+    text-align: left;
+    flex-grow: 1; 
+}
+/* Título del libro anterior, truncado si es largo */
+.libroItem .libroInfo h4 { 
+    font-size: 1em;
+    font-weight: bold;
+    color: #4a0e6b;
+    margin-top: 0;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Info adicional del libro anterior, truncada si es larga */
+.libroItem .libroInfo p { 
+    font-size: 0.8em;
+    color: #555;
+    margin-bottom: 3px;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.libroItem .libroInfo p.fechaAnadido { 
+    font-style: italic;
+    color: #777;
+    margin-top: 5px;
+}
+
+/*  Mensaje cuando no hay resultados  */
+.noResultados { 
+    text-align: center; 
+    font-size: 1.1em; 
+    color: #555; 
+    margin-top: 25px;
+    padding: 20px; 
+    background-color: #f8f5fc; 
+    border-radius: 8px;
+    border: 1px dashed #d8cde4;
+}
+
+/* Quitar subrayado en los enlaces de libros anteriores */
+.listaLibrosGrupo .libroItem a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+/* Ajustes para móviles y tablets  */
+@media (max-width: 767px) {
+    .containerPrincipalGrupo { 
+        width: 95%;
+        padding: 20px 15px;
+    }
+    .grupoEncabezadoArea { 
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    .grupoInfoDetallada { 
+        text-align: center;
+    }
+    .grupoInfoDetallada h1 { 
+        font-size: 2em;
+    }
+    .accionesPagina { 
+        flex-direction: column;
+        align-items: stretch; 
+    }
+    .accionesPagina .botonAccion { 
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .accionesPagina .botonVolver {
+        margin-left: 0; 
+    }
+
+    .libroDestacado { 
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        gap: 15px;
+    }
+    .libroDestacado .libroPortadaContenedor { 
+        width: 150px; 
+        height: 220px;
+        margin-bottom: 10px;
+    }
+    .libroDestacado .libroInfo h3 { 
+        font-size: 1.5em;
+    }
+
+    .listaLibrosGrupo { 
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+        gap: 15px;
+    }
+    .libroItem .libroPortadaContenedor { 
+        height: 160px; 
+    }
+    .libroItem .libroInfo h4 { 
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .listaLibrosGrupo { 
+        grid-template-columns: 1fr; 
+    }
+    .grupoImagenGrande { 
+        width: 120px; 
+        height: 120px;
+    }
+    .grupoInfoDetallada h1 { 
+        font-size: 1.8em;
+    }
+    .libroDestacado .libroPortadaContenedor { 
+        width: 130px; 
+        height: 190px;
+    }
+}

@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-image: url('../../img/fondo.png');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: white;
+  overflow: hidden;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+
+}
+
+.logo img {
+  width: 50px;
+  vertical-align: middle;
+}
+
+.titulo a {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #9072d1;
+}
+
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin-top: 60px;
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.descripcion {
+  background-color: #f4eefc;
+  padding: 35px 45px;
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 6px 25px rgba(126, 87, 194, 0.15);
+  margin-bottom: 20px;
+  border: 1px solid #dcd0ff;
+}
+
+
+
+.descripcion h2 {
+  color: #7E57C2;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.descripcion p {
+  line-height: 1.7;
+  color: #6a5f7a;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.descripcion p:last-child {
+  margin-bottom: 0;
+}
+
+
+.book-animation-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+
+.footer {
+  position: relative;
+  background: #8263b8;
+  padding: 50px 0;
+  text-align: center;
+  color: #F5F7FA;
+  overflow: hidden;
+}
+
+.contacto p {
+  margin: 5px 0;
+}
+
+.contacto a {
+  color: white;
+  text-decoration: none;
+}
+
+.mensajeFooter {
+  position: relative;
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #EDE7F6;
+  z-index: 1;
+}

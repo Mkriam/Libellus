@@ -1,0 +1,273 @@
+/* Estilos para el modal de añadir libro.*/
+
+/* Cuando el modal está abierto, se desactiva el scroll del body */
+body.modalAbierta { 
+  overflow: hidden;
+}
+
+/* Overlay oscuro que cubre toda la pantalla cuando el modal está activo */
+.modalOverlay { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Contenedor principal del modal */
+.modalContenido { 
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 700px; /* Ancho máximo del modal */
+  max-height: 90vh; /* Altura máxima del modal */
+  display: none;
+  flex-direction: column;
+}
+
+/* Cabecera del modal: título y botón de cerrar */
+.modalCabecera { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 15px;
+}
+.modalCabecera h2 { 
+  margin: 0;
+  font-size: 1.6em;
+  color: #333;
+}
+
+/* Botón para cerrar el modal (icono X) */
+.modalBotonCerrar { 
+  background: none;
+  border: none;
+  font-size: 2em;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  padding: 0;
+}
+.modalBotonCerrar:hover { 
+  color: #000;
+}
+
+/* Cuerpo del modal: área donde se muestran los resultados o el formulario */
+.modalCuerpo { 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+  flex-grow: 1; 
+}
+
+/* Campo de búsqueda dentro del modal */
+#campoBusquedaModalLibros { 
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* Lista de resultados de búsqueda de libros */
+#listaModalLibrosResultados { 
+  overflow-y: auto;
+  flex-grow: 1;
+  display: grid;
+  /* Ajusta minmax para controlar cuántos items caben por fila y su tamaño mínimo */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Aumentado un poco para más espacio */
+  gap: 20px;
+  padding: 5px;
+  min-height: 200px; /* Para asegurar que el área tenga algo de altura incluso si está vacía inicialmente */
+}
+
+/* Tarjeta de libro en la lista de resultados */
+.datosLibroModal { 
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 10px; /* Reducido un poco */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #fdfdfd;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Para alinear contenido arriba si no ocupa todo */
+  align-items: center; /* Centra horizontalmente el contenido */
+  position: relative;
+  height: auto; /* Permitir que crezca, pero podría usar min-height si se prefiere */
+}
+.datosLibroModal:hover { 
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.datosLibroModal.yaGuardadoVisual { 
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.datosLibroModal.yaGuardadoVisual:hover { 
+  transform: none;
+  box-shadow: none;
+}
+
+/* Marca visual para indicar que ya está guardado */
+.yaGuardadoMarker { 
+  position: absolute;
+  top: 5px; /* Ajustado */
+  right: 5px; /* Ajustado */
+  background-color: #198754;
+  color: white;
+  padding: 2px 5px; /* Ajustado */
+  font-size: 0.7em; /* Ajustado */
+  border-radius: 3px; /* Ajustado */
+  font-weight: 500;
+  z-index: 1;
+}
+
+/* Contenedor de la imagen de portada */
+.portadaModal { 
+    width: 100%; /* Ocupa el ancho del item */
+    height: 150px; /* Altura fija para la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px; /* Espacio reducido */
+    overflow: hidden; /* Para asegurar que la imagen no desborde */
+}
+
+/* Imagen de portada del libro */
+.portadaLibroModal { 
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* 'cover' podría recortar, 'contain' asegura que se vea toda */
+  border-radius: 4px;
+}
+
+/* Información textual del libro en la tarjeta */
+.infoLibroModal { 
+  width: 100%; /* Asegura que ocupe el ancho del item */
+  text-align: center; /* Centra el texto */
+}
+.infoLibroModal h3 {
+  font-size: 0.9em; /* Ligeramente más pequeño */
+  font-weight: 600;
+  margin: 0 0 4px 0; /* Espacio ajustado */
+  color: #222;
+  line-height: 1.2;
+  height: calc(0.9em * 1.2 * 2); /* Forzar altura para 2 líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.infoLibroModal p { /* selector para párrafos de autor/género */
+  font-size: 0.75em; /* Más pequeño */
+  color: #555;
+  margin: 2px 0; /* Espacio ajustado */
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Modal de confirmación para acciones importantes */
+.confirmacionModal { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1010;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.confirmacionModalContenido { 
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+}
+.confirmacionModalContenido p { 
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.15em;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Botones de confirmación/cancelación en el modal de confirmación */
+.confirmacionModalBotones button { 
+  padding: 12px 25px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+/* Botón para confirmar añadir libro */
+#botonConfirmarAnadirLibro { 
+  background-color: #198754;
+  color: white;
+}
+#botonConfirmarAnadirLibro:hover { 
+  background-color: #157347;
+}
+
+/* Botón para cancelar añadir libro */
+#botonCancelarAnadirLibro { 
+  background-color: #dc3545;
+  color: white;
+}
+#botonCancelarAnadirLibro:hover { 
+  background-color: #bb2d3b;
+}
+
+/* Mensaje cuando no hay resultados en la búsqueda de libros */
+.noResultadosModal { 
+  padding: 25px;
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.05em;
+  width: 100%;
+  grid-column: 1 / -1; 
+}
+
+/* Botón para abrir el modal de nuevo libro desde fuera del modal */
+#botonAbrirModalAnadirLibro.botonAccion { 
+  padding: 10px 18px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95em;
+  margin-left: 15px;
+  transition: background-color 0.2s;
+}
+#botonAbrirModalAnadirLibro.botonAccion:hover { 
+  background-color: #0b5ed7;
+}

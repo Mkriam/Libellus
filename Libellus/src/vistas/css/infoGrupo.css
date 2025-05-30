@@ -1,0 +1,318 @@
+/*  Estilos para la página de información de grupo. */
+
+/* Fondo general y layout principal */
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-image: url('../../img/fondo.png'); 
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 70px; /* Ajustado para el header */
+    box-sizing: border-box;
+}
+
+/* Contenedor principal del grupo */
+main.containerPrincipalGrupo {
+    background-color: rgba(252, 250, 255, 0.97);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 20px auto 30px auto;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Botón de acción general (más info, volver, salir, etc.) */
+.botonAccion {
+    padding: 10px 22px;
+    font-size: 0.95em;
+    border-radius: 20px;
+    border: none;
+    background-color: #7426bd !important;
+    color: #fff !important;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    font-weight: 500;
+}
+.botonAccion:hover {
+    background-color: #5a1e9a;
+    transform: translateY(-2px);
+}
+.botonAccion:active {
+    transform: translateY(0px);
+}
+
+/* Botón para añadir libro al grupo*/
+.botonAccion.botonAnadirLibro {
+    background-color: #7426bd;
+    color: white;
+    margin-left: auto;
+    margin-right: 0;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.botonAccion.botonAnadirLibro:hover {
+    background-color: #5a1e9a !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+.botonAccion.botonAnadirLibro:active {
+    transform: translateY(0px);
+}
+
+/* Cabecera del grupo: imagen, info y botón admin */
+.grupoHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d8cde4;
+    position: relative;
+}
+
+/* Imagen grande del grupo en la cabecera */
+.grupoImagenGrande {
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #e8e0f3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+/* Información textual detallada del grupo */
+.grupoInfoDetallada {
+    flex-grow: 1;
+    text-align: left;
+}
+.grupoInfoDetallada h1 {
+    font-size: 2.5em;
+    color: #4a0e6b;
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+.grupoDescripcion {
+    font-size: 1.1em;
+    color: #4f4f4f;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.grupoLider {
+    font-size: 0.95em;
+    color: #6a4a8d;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Botón de administración del grupo, aparece en la cabecera arriba a la derecha */
+.botonAdminGrupo { /* Botón flotante para acceder a la administración del grupo */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 7px;
+    background-color: rgba(230, 220, 240, 0.8);
+    border-radius: 50%;
+    line-height: 0;
+    transition: background-color 0.2s ease;
+}
+.botonAdminGrupo:hover { /* Fondo más oscuro al pasar el ratón */
+    background-color: rgba(200, 180, 220, 1);
+}
+.botonAdminGrupo img { /* Icono de engranaje o similar */
+    width: 22px;
+    height: 22px;
+}
+
+/* Contenedor de los botones principales del grupo (más info, volver, salir, etc.) */
+.accionesGrupoContainer {
+    display: flex;
+    gap: 15px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d8cde4;
+    align-items: center;
+}
+
+/* Botón para salir del grupo */
+.botonAccion.botonSalirGrupo {
+    background-color: #c82333;
+}
+.botonAccion.botonSalirGrupo:hover {
+    background-color: #ae1c2b;
+}
+
+/* Botón para volver atrás */
+.botonAccion.botonVolver {
+    background-color: #478ed4;
+    margin-left: auto;
+}
+.botonAccion.botonVolver:hover {
+    background-color: #407faf;
+}
+
+/* Títulos de las secciones de libros y miembros */
+.librosDelGrupoSeccion h2,
+.miembrosDelGrupoSeccion h2 {
+    font-size: 1.8em;
+    color: #4a0e6b;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c8b6dc;
+}
+
+/* Grid de libros del grupo */
+.listaLibrosGrupo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+    padding-bottom: 20px;
+}
+
+/* Tarjeta de libro dentro del grupo */
+.libroItemGrupo {
+    background-color: whitefff;
+    border: 1px solid #dfd8e7;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.libroItemGrupo:hover { /* Eleva la tarjeta y resalta la sombra al pasar el ratón */
+    box-shadow: 0 5px 12px rgba(74,14,107,0.15);
+    transform: translateY(-3px);
+}
+
+/* Enlace que cubre toda la tarjeta de libro */
+.enlaceLibroGrupo {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Imagen de portada del libro en la tarjeta */
+.libroPortadaGrupo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Información textual del libro en la tarjeta */
+.libroInfoGrupo {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.libroInfoGrupo h3 {
+    font-size: 1.05em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+.libroInfoGrupo .fechaAnadido {
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 4px;
+}
+.libroInfoGrupo .autoresLibro,
+.libroInfoGrupo .generosLibro {
+    font-size: 0.8em;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+/* Quita el subrayado de todos los textos dentro de la tarjeta de libro cuando están dentro de un enlace */
+.libroItemGrupo a,
+.enlaceLibroGrupo {
+    text-decoration: none !important;
+    color: inherit;
+}
+.libroItemGrupo a * {
+    text-decoration: none !important;
+}
+
+/* Mensaje cuando no hay libros en el grupo */
+.librosDelGrupoSeccion > p.noResultados {
+    text-align: center;
+    font-size: 1.05em;
+    color: #555;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f3eff7;
+    border-radius: 6px;
+}
+
+/* Lista de miembros del grupo en formato horizontal y responsivo */
+.listaMiembrosGrupo {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+.listaMiembrosGrupo li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    text-align: center;
+}
+.listaMiembrosGrupo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 6px;
+    border: 2px solid #d8cde4;
+}
+.listaMiembrosGrupo span {
+    font-size: 0.85em;
+    color: #4a0e6b;
+    word-break: break-word;
+}
+
+/* Mensajes de éxito y error para feedback al usuario */
+.mensajeExito,
+.mensajeError {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.mensajeExito {
+    background-color: #d4edda;
+    color: darkgreen;
+    border: 1px solid #c3e6cb;
+}
+.mensajeError {
+    background-color: #f8d7da;
+    color: #ce1e30;
+    border: 1px solid #f5c6cb;
+}
