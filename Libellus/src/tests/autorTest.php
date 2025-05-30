@@ -56,8 +56,7 @@ if (is_array($autores) && count($autores) > 0) {
 }
 
 // Prueba 7: verAutor
-$ultimo = end($autores);
-$id = $ultimo->getIdAutor();
+$id = $autores[count($autores) - 1]->getIdAutor();
 $autorEncontrado = Autor::verAutor($id);
 if ($autorEncontrado && $autorEncontrado->getIdAutor() === $id) {
     echo "verAutor OK\n";
@@ -68,9 +67,13 @@ if ($autorEncontrado && $autorEncontrado->getIdAutor() === $id) {
 // Prueba 8: eliminarAutor (autor recién creado)
 $autorEliminar = new Autor("AutorEliminarTest");
 if ($autorEliminar->guardarAutor()) {
-    $autores = Autor::listarAutores();
-    $ultimo = end($autores);
-    $idEliminar = $ultimo->getIdAutor();
+    // Obtener el último ID correctamente
+    $conexion = new Conexion("libellus", "db", "miriam", "libreria123");
+    $con = $conexion->getConexion()->query("SELECT id_autor FROM AUTOR ORDER BY id_autor DESC LIMIT 1");
+    $idEliminar = $con->fetchColumn();
+    $conexion->cerrarConexion();
+
+    // Intentar eliminar al autor
     if (Autor::eliminarAutor($idEliminar)) {
         echo "eliminarAutor OK\n";
     } else {
@@ -78,6 +81,21 @@ if ($autorEliminar->guardarAutor()) {
     }
 } else {
     echo "guardarAutor para prueba de eliminación falló\n";
+}
+
+// 🔹 **Eliminar "AutorNuevoTest" al final**
+$conexion = new Conexion("libellus", "db", "miriam", "libreria123");
+$con = $conexion->getConexion()->prepare("SELECT id_autor FROM AUTOR WHERE nom_autor = 'AutorNuevoTest' LIMIT 1");
+$con->execute();
+$idNuevoAutor = $con->fetchColumn();
+$conexion->cerrarConexion();
+
+if ($idNuevoAutor) {
+    if (Autor::eliminarAutor($idNuevoAutor)) {
+        echo "AutorNuevoTest eliminado correctamente.\n";
+    } else {
+        echo "No se pudo eliminar AutorNuevoTest.\n";
+    }
 }
 
 // Prueba 9: eliminarAutor con ID inexistente

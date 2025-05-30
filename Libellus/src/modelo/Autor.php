@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Conexion.php';
-require_once '../controlador/validaciones.php';
+require_once __DIR__ . '/../controlador/validaciones.php';
 
 /**
  * Clase Autor
@@ -183,9 +183,9 @@ class Autor{
      * @return bool True si se eliminó correctamente, false en caso contrario
      */
     public static function eliminarAutor($idAutor){
-        $idAutor = validarCadena(filter_var($idAutor, FILTER_VALIDATE_INT));
+        $idAutor = validarEnteroPositivo($idAutor);
         $salida = false;
-        if ($idAutor && $idAutor > 0) {
+        if ($idAutor) {
             if (Autor::verAutor($idAutor)) {
                 try {
                     $conexion = new Conexion("libellus", "db", "miriam", "libreria123");

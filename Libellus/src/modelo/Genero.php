@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Conexion.php';
-require_once '../controlador/validaciones.php';
+require_once __DIR__ . '/../controlador/validaciones.php';
 require_once 'Libro.php';
 
 /**
