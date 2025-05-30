@@ -3,7 +3,7 @@ require_once 'Conexion.php';
 require_once 'Grupo.php';
 require_once 'Autor.php';
 require_once 'Genero.php';
-require_once '../controlador/validaciones.php';
+require_once __DIR__ . '/../controlador/validaciones.php';
 
 /**
  * Clase Libro
