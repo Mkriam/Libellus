@@ -85,8 +85,8 @@ INSERT INTO ESCRIBE (id_libro, id_autor) VALUES
 
 -- Grupos
 INSERT INTO GRUPO (nom_grupo, img_grupo, clave_grupo, descripcion, id_lider) VALUES
-('Fans de Harry Potter', 'https://i.pinimg.com/736x/75/a9/21/75a9211851d21ea9b7a0efb1ba6a6866.jpg', '$2y$12$YwSpxie6j8YuIppveFwjRuMJDTwvnijFyjpefzfx6Kzt4PF89YTJK', 'Grupo para fans de los libros de Harry Potter.', 'PruebaMiembro');
--- clave: Harrypoter1
+('Fans de Harry Potter', 'https://i.pinimg.com/736x/75/a9/21/75a9211851d21ea9b7a0efb1ba6a6866.jpg', '$2y$12$a.w9ao0Dz5GtCcjItQf9SOc7mlCGr1/f8mDiCnqkkLl4Cs0hjBgHG', 'Grupo para fans de los libros de Harry Potter.', 'PruebaMiembro');
+-- clave: Harrypotter1
 
 -- Pertenece
 INSERT INTO PERTENECE (nom_usu, id_grupo, fec_union) VALUES

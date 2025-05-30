@@ -252,7 +252,7 @@ class Usuario
             try {
                 $conexion = new Conexion("libellus", "db", "miriam", "libreria123");
                 // Actualiza la clave en la base de datos
-                $con = $conexion->getConexion()->prepare("UPDATE USUARIO SET clave_usu = :claveUsu WHERE nom_usu = :nomUsu");
+                $con = $conexion->getConexion()->prepare("UPDATE USUARIO SET clave_usu = :clave_usu WHERE nom_usu = :nom_usu");
                 $con->bindParam(':clave_usu', $this->claveUsu);
                 $con->bindParam(':nom_usu', $this->nomUsu);
                 $exito = $con->execute();

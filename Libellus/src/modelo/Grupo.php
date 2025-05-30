@@ -259,7 +259,7 @@ class Grupo
         $grupoBuscado = null;
         $idGrupoVal = validarEnteroPositivo($idGrupo);
 
-        if ($idGrupoVal && $idGrupoVal > 0) {
+        if ($idGrupoVal) {
             try {
                 $conexion = new Conexion("libellus", "db", "miriam", "libreria123");
                 $con = $conexion->getConexion()->prepare("SELECT * FROM GRUPO WHERE id_grupo = :id_grupo");
@@ -283,8 +283,6 @@ class Grupo
             } catch (PDOException $e) {
                 error_log("Error al obtener el grupo: " . $e->getMessage());
             }
-        } else {
-            error_log("ID de grupo no válido para obtenerGrupo: " . print_r($idGrupo, true));
         }
         return $grupoBuscado;
     }
@@ -464,10 +462,9 @@ class Grupo
     public function guardarGrupo()
     {
         $salida = false;
-
+        $usu = Usuario::verUsuarioPorNom($this->idLider);
         // Verifica que el líder exista
-        if (Usuario::verUsuarioPorNom($this->idLider)) {
-            $usu = Usuario::verUsuarioPorNom($this->idLider);
+        if ($usu) {
             try {
                 $conexion = new Conexion("libellus", "db", "miriam", "libreria123");
                 $con = $conexion->getConexion();

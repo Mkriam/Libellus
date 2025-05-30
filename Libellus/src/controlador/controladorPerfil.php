@@ -91,7 +91,7 @@ if (filter_has_var(INPUT_POST, "accion")) {
                     } else {
                         // Comprobar si ya existe el email en otro usuario
                         $emailExiste = Usuario::verUsuarioPorEmail($emailNuevo);
-                        if ($existeEmail !== null && $existeEmail->getNomUsu() !== $nomViejo) {
+                        if ($emailExiste !== null && $emailExiste->getNomUsu() !== $nomViejo) {
                             $_SESSION['mensajeError'] = "El nuevo email ('" . $emailNuevo . "') ya está en uso.";
                         } else if ($datosUsu->setEmail($emailNuevo)) {
                             // Intentar actualizar el email

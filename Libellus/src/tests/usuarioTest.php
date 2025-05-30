@@ -12,26 +12,9 @@ try {
     echo "Constructor con datos válidos falló: " . $e->getMessage() . "\n";
 }
 
-// Prueba 2: verUsuarioPorNom con nombre válido
-$usuarioEncontrado = Usuario::verUsuarioPorNom("UsuarioPrueba");
-if ($usuarioEncontrado && $usuarioEncontrado->getNomUsu() === "UsuarioPrueba") {
-    echo "verUsuarioPorNom OK\n";
-} else {
-    echo "verUsuarioPorNom falló\n";
-}
-
-// Prueba 3: verUsuarioPorEmail con email válido
-$usuarioPorEmail = Usuario::verUsuarioPorEmail("usuario@correo.com");
-if ($usuarioPorEmail && $usuarioPorEmail->getEmail() === "usuario@correo.com") {
-    echo "verUsuarioPorEmail OK\n";
-} else {
-    echo "verUsuarioPorEmail falló\n";
-}
-
-// Prueba 4: guardarUsuario (nuevo usuario)
+// Prueba 2: guardarUsuario (nuevo usuario)
 try {
-    $usuarioNuevo = new Usuario("UsuarioNuevoTest", "nuevo@correo.com", "ClaveSegura123");
-    if ($usuarioNuevo->guardarUsuario()) {
+    if ($usuario->guardarUsuario()) {
         echo "guardarUsuario nuevo usuario OK\n";
     } else {
         echo "guardarUsuario nuevo usuario falló\n";
@@ -39,6 +22,24 @@ try {
 } catch (Exception $e) {
     echo "Excepción en guardarUsuario: " . $e->getMessage() . "\n";
 }
+
+// Prueba 3: verUsuarioPorNom con nombre válido
+$usuarioEncontrado = Usuario::verUsuarioPorNom("UsuarioPrueba");
+if ($usuarioEncontrado && $usuarioEncontrado->getNomUsu() === "UsuarioPrueba") {
+    echo "verUsuarioPorNom OK\n";
+} else {
+    echo "verUsuarioPorNom falló\n";
+}
+
+// Prueba 4: verUsuarioPorEmail con email válido
+$usuarioPorEmail = Usuario::verUsuarioPorEmail("usuario@correo.com");
+if ($usuarioPorEmail && $usuarioPorEmail->getEmail() === "usuario@correo.com") {
+    echo "verUsuarioPorEmail OK\n";
+} else {
+    echo "verUsuarioPorEmail falló\n";
+}
+
+
 
 // Prueba 5: actualizarDatos
 $usuarioEncontrado->setEmail("actualizado@correo.com");
@@ -65,25 +66,11 @@ if ($loginUsuario) {
 }
 
 // Prueba 8: eliminarUsuario
-if ($usuarioNuevo && Usuario::eliminarUsuario("UsuarioNuevoTest")) {
+if (Usuario::eliminarUsuario("UsuarioPrueba")) {
     echo "eliminarUsuario OK\n";
 } else {
     echo "eliminarUsuario falló\n";
 }
 
-// 🔹 **Eliminar "UsuarioNuevoTest" al final**
-$conexion = new Conexion("libellus", "db", "miriam", "libreria123");
-$con = $conexion->getConexion()->prepare("SELECT nom_usu FROM USUARIO WHERE nom_usu = 'UsuarioNuevoTest' LIMIT 1");
-$con->execute();
-$nomUsuarioNuevo = $con->fetchColumn();
-$conexion->cerrarConexion();
-
-if ($nomUsuarioNuevo) {
-    if (Usuario::eliminarUsuario($nomUsuarioNuevo)) {
-        echo "UsuarioNuevoTest eliminado correctamente.\n";
-    } else {
-        echo "No se pudo eliminar UsuarioNuevoTest.\n";
-    }
-}
 
 echo "==== FIN DE PRUEBAS ====\n";
