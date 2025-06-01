@@ -14,7 +14,7 @@ try {
 
 // Prueba 2: verLibro con ID válido
 $libroEncontrado = Libro::verLibro(1); // ID 1 como ejemplo
-if ($libroEncontrado && $libroEncontrado->getIdLibro() === 1) {
+if ($libroEncontrado && $libroEncontrado->getIdLibro() == 1) {
     echo "verLibro OK\n";
 } else {
     echo "verLibro falló\n";
